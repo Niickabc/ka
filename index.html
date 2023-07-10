@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <a href="index.html"><button id="Back"><span>Back</span></button></a>
+    <form method="post" action="main.php" >
+        Name: <input id="namee" type="text" name="name" size="2px" required>
+        Email: <input id="emaill" type="email" name="email" size="20px" required>
+        Tel. Nummer: <input type="tel" id="nummerr" name="number" size="20px" required >
+        <input id="submitt" type="submit" value="Abschicken">
+    </form>
+
+    <form method="post" action="log.php">
+        <label for="username">Benutzername:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Passwort:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Anmelden">
+      </form>
+
+      <?php if(isset($_GET['error'])): ?>
+      <style>
+        .anmelden {
+            color:red;
+        }
+        .notification {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: max-content;
+            padding: 20px 15px;
+            border-radius: 4px;
+            background-color: #141619;
+            color: #f6f5f9;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+            transform: translateY(30px);
+            opacity: 0;
+            visibility: hidden;
+            animation: fade-in 4s linear forwards;
+        }
+        .notification__progress {
+            position: absolute;
+            left: 5px;
+            bottom: 5px;
+            width: calc(100% - 10px);
+            height: 3px;
+            transform: scaleX(0);
+            transform-origin: left;
+            background-image: linear-gradient(to right, #539bdb, #3250bf);
+            border-radius: inherit;
+            animation: load 3s 0.25s linear forwards;
+        }
+        @keyframes fade-in {
+            5% {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes load {
+            to {
+                transform: scaleX(1);
+            }
+        }
+      </style>
+      <div class="notification"><p class="anmelden">Ungültige anmelde Daten!</p><span class="notification__progress"> <?php echo $_GET['error']; ?></div></p></span>
+        <?php endif; ?>
+   
+
+</body>
+</html>
+
+
+
